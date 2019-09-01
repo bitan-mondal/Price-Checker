@@ -29,7 +29,7 @@ def send_email():
     server.starttls()
     server.ehlo()
     
-    server.login('bitanstrikermondal@gmail.com','pglctnoajwtuousl')
+    server.login('<EMAIL>','<PASSWORD>')
 
     subject = 'Price Drop Alert!'
     body = 'Check the Amazon link https://www.amazon.in/Adidas-Furio-Running-Shoes-8-CJ0110/dp/B07B2J4V8C/ref=sr_1_35?keywords=adidas+shoes&qid=1566905021&s=gateway&sr=8-35'
@@ -37,8 +37,8 @@ def send_email():
     msg = f"Subject: {subject}\n\n{body}"
 
     server.sendmail(
-        'bitanstrikermondal@gmail.com',
-        'bitanmondal011@gmail.com',
+        '<EMAIL-FROM>',
+        '<EMAIL-TO>',
          msg
     )
 
