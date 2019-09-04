@@ -17,16 +17,16 @@ def send_email():
     msg = f"Subject: {subject}\n\n{body}"
 
     server.sendmail(
-        '<EMAIL-FROM>',
-        '<EMAIL-TO>',
+        '<FROM: EMAIL>',
+        '<TO: EMAIL',
          msg
     )
 
-    #print('Email has been sent!')
+    # print('Email has been sent!')
 
     server.quit()
 
-def check_price(URL,headers):
+def check_price(URL,headers,desiredPrice):
     page = requests.get(URL, headers=headers)
 
     soup = BeautifulSoup(page.content, 'html.parser')
@@ -38,14 +38,14 @@ def check_price(URL,headers):
     if(converted_price < desiredPrice):
         send_email()
 
-    print(title.strip())
-    print(converted_price)
+    # print(title.strip())
+    # print(converted_price)
 
     
 if __name__ == "__main__":
     URL = 'https://www.amazon.in/Adidas-Furio-Running-Shoes-8-CJ0110/dp/B07B2J4V8C/ref=sr_1_35?keywords=adidas+shoes&qid=1566905021&s=gateway&sr=8-35'
     headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36'}
-    timeInSecondsToWait = 3600
+    timeInSecondsToWait = 5
     desiredPrice = "2,250"
     while(True):
         check_price(URL,headers,desiredPrice)
